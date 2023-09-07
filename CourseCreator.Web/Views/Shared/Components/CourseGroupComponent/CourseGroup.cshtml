@@ -7,9 +7,20 @@
 
                 @foreach (var group in Model.Where(g => g.ParentId == null))
                 {
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: white;">@group.GroupTitle</a>
-                       
+                    @* <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: white;">@group.GroupTitle</a> *@
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" style="color: white;" href="#" role="button" data-bs-toggle="dropdown">@group.GroupTitle</a>
+                        @if(Model.Any(g => g.ParentId == group.CourseGroupId))
+                        {
+                            <ul class="dropdown-menu bg-dark">
+                                @foreach(var sub in Model.Where(g => g.ParentId == group.CourseGroupId))
+                                {
+                                    
+                                        <li><a class="dropdown-item" style="color: white;" href="#">@sub.GroupTitle</a></li>                                   
+                                }
+                            </ul>
+                        }
                     </li>
  
                 }
