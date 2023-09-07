@@ -4,6 +4,23 @@
     ViewBag.Title = "Home";
     Layout = "_Layout";
 }
+<nav class="navbar">
+    <div class="logo">
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div style="font-size:10px;">
+                <i><a href="#" style="text-decoration:none; color: white;">Welcome @User.Identity.Name</a></i>
+
+                <a href="/Logout" style="text-decoration:none;margin-left:10px; color: white;">Logout</a>
+            </div>
+        }
+        else
+        {
+            <a href="/" style="text-decoration: none; color: white;">Home</a>
+        }
+    </div>
+ </nav>
 @section SliderContainer
     {
     <div class="container">
