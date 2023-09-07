@@ -1,4 +1,5 @@
-﻿using CourseCreator.Datalayer.Entities.User;
+﻿using CourseCreator.Core.DTOs;
+using CourseCreator.Datalayer.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace CourseCreator.Core.Services.Interfaces
         bool IsUsernameExist(string username);
         bool IsEmailExist(string email);
         int AddUser(User user);
+        User LoginUser(LoginViewModel login);
+        bool ActiveAccount(string activeCode);
     }
 }
