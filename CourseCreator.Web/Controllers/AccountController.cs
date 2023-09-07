@@ -1,6 +1,9 @@
 ﻿using CourseCreator.Core.Convertors;
 using CourseCreator.Core.DTOs;
+using CourseCreator.Core.Security;
 using CourseCreator.Core.Services.Interfaces;
+using CourseCreator.Core.Utils;
+using CourseCreator.Datalayer.Entities.User;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
@@ -39,9 +42,19 @@ namespace CourseCreator.Web.Controllers
                 return View(register);
             }
 
-            //TODO: Register User
+            User user = new User()
+            {
+                ActiveCode = CodeGenerator.stringCodeGenerator(),
+                Email = InputConvertors.EmailValidator(register.Email),
+                IsActive = false,
+                Password = HashString.hashString(register.Password),
+                RegisterDate = DateTime.Now,
+                UserAvatar = "default.png",
+                Username = register.Username,
 
-            return View();
+            };
+            _userService.AddUser(user);
+            return View("SuccessRegister");
         }
     }
 

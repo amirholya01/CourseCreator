@@ -20,4 +20,8 @@
     <ProjectReference Include="..\CourseCreator.Datalayer\CourseCreator.Datalayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\UserAvatar\" />
+  </ItemGroup>
+
 </Project>

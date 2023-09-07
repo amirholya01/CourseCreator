@@ -1,5 +1,6 @@
 ﻿using CourseCreator.Core.Services.Interfaces;
 using CourseCreator.Datalayer.Context;
+using CourseCreator.Datalayer.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace CourseCreator.Core.Services
             _context = context;
         }
 
+    
 
         public bool IsEmailExist(string email)
         {
@@ -26,6 +28,13 @@ namespace CourseCreator.Core.Services
         public bool IsUsernameExist(string username)
         {
             return _context.Users.Any(u => u.Username == username);
+        }
+
+        public int AddUser(User user)
+        {
+            _context.Users.Add(user);
+            _context.SaveChanges();
+            return user.UserId;
         }
     }
 }
