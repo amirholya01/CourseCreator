@@ -1,4 +1,5 @@
 using CourseCreator.Core.Services;
+using CourseCreator.Core.Services.Interfaces;
 using CourseCreator.Core.Servieces.Interfaces;
 using CourseCreator.Datalayer.Context;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,7 @@ builder.Services.AddRazorPages();
 
 //IOC
 #region IOC
+builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ICourseService, CourseService>();
 
 #endregion

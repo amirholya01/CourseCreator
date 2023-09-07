@@ -1,0 +1,103 @@
+﻿@model CourseCreator.Core.DTOs.RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f1f1f1;
+    }
+
+    .container {
+        max-width: 400px;
+        max-height: 600px;
+        padding: 20px;
+        margin: 0 auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: #fff;
+        border-radius: 30px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    input[type="text"], input[type="password"], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
+<script>
+    /*document.getElementById("registerForm").addEventListener("submit", function(event) {
+                  event.preventDefault();
+                  // You can perform additional validation or AJAX request here
+                  alert("Registration form submitted!");
+                  // Clear form inputs
+                  document.getElementById("registerForm").reset();
+                }); */
+</script>
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Register">Register</a>
+            </li>
+           
+        </ul>
+    </div>
+</nav>
+<div class="container mt-3">
+    <h1>Registration Form</h1>
+    <form id="registerForm" asp-action="Register" method="post">
+        <label for="username"><b>Username</b></label>
+        <input type="text" asp-for="Username" placeholder="Enter your username" name="username" required />
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" asp-for="Email" placeholder="Enter your email" name="email" required>
+
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" asp-for="Password" placeholder="Enter a password" name="password" required>
+
+        <label for="confirmPassword"><b>Confirm Password</b></label>
+        <input type="password" asp-for="ConfirmPassword" placeholder="Enter confirm password" name="confirmPassword" required>
+
+        <div class="clearfix">
+            <button type="submit">Register</button>
+        </div>
+        <div asp-validation-summary="All" class="text-danger"></div>
+    </form>
+</div>
