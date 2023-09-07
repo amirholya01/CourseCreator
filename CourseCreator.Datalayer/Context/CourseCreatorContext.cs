@@ -1,4 +1,5 @@
 ﻿using CourseCreator.Datalayer.Entities.Course;
+using CourseCreator.Datalayer.Entities.User;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,12 @@ namespace CourseCreator.Datalayer.Context
         {
             
         }
+
+        #region User
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<UserRole> userRoles { get; set; }
+        #endregion
 
         #region Courses
         public DbSet<CourseGroup> CourseGroups { get; set; }

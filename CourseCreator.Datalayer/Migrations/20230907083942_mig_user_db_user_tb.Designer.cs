@@ -4,6 +4,7 @@ using CourseCreator.Datalayer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CourseCreator.Datalayer.Migrations
 {
     [DbContext(typeof(CourseCreatorContext))]
-    partial class CourseCreatorContextModelSnapshot : ModelSnapshot
+    [Migration("20230907083942_mig_user_db_user_tb")]
+    partial class mig_user_db_user_tb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

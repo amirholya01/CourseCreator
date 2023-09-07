@@ -4,6 +4,7 @@ using CourseCreator.Datalayer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CourseCreator.Datalayer.Migrations
 {
     [DbContext(typeof(CourseCreatorContext))]
-    partial class CourseCreatorContextModelSnapshot : ModelSnapshot
+    [Migration("20230907083356_mig_user_db")]
+    partial class mig_user_db
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,8 +78,7 @@ namespace CourseCreator.Datalayer.Migrations
 
                     b.Property<string>("ActiveCode")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -97,8 +98,7 @@ namespace CourseCreator.Datalayer.Migrations
 
                     b.Property<string>("UserAvatar")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
                         .IsRequired()
