@@ -7,9 +7,10 @@
     SideBarUserPanelViewModel user = _userService.GetSidebarUserPanelData(User.Identity.Name);
 }
 <aside>
-    <h2>Detail info</h2>
+    <h2 class="text-success">Detail info</h2>
     <hr />
     <img src="/UserAvatar/@user.ImageName" alt="img" width="200">
+    <br/>
     <ul>
         <li>
             <span> Username : 
