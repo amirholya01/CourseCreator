@@ -1,0 +1,26 @@
+﻿@using CourseCreator.Core.DTOs;
+@using CourseCreator.Core.Services.Interfaces;
+
+@inject IUserService _userService;
+
+@{
+    SideBarUserPanelViewModel user = _userService.GetSidebarUserPanelData(User.Identity.Name);
+}
+<aside>
+    <h2>Detail info</h2>
+    <hr />
+    <img src="/UserAvatar/@user.ImageName" alt="img" width="200">
+    <ul>
+        <li>
+            <span> Username : 
+                @user.Username
+             </span>
+        </li>
+        <li>
+            <span> Register Date : 
+                @user.RegisterDate
+            </span>
+        </li>
+     
+    </ul>
+</aside>

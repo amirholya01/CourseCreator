@@ -6,9 +6,8 @@ using CourseCreator.Datalayer.Entities.User;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Security.Claims;
-using CourseCreator.Core.DTOs.User;
+using CourseCreator.Core.DTOs;
 
 namespace CourseCreator.Web.Controllers
 {

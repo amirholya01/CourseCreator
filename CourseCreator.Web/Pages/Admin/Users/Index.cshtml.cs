@@ -1,4 +1,4 @@
-using CourseCreator.Core.DTOs.User;
+using CourseCreator.Core.DTOs;
 using CourseCreator.Core.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

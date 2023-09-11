@@ -14,6 +14,7 @@ namespace CourseCreator.Core.Services.Interfaces
 
         #region User Panel
         InformationUserViewModel GetUserInformation(string username);
+        SideBarUserPanelViewModel GetSidebarUserPanelData(string username);
         #endregion
 
         #region Admin Panel

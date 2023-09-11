@@ -13,4 +13,11 @@ namespace CourseCreator.Core.DTOs
         public DateTime RegisterDate { get; set; }
        
     }
+
+    public class SideBarUserPanelViewModel
+    {
+        public string Username { get; set; }
+        public DateTime RegisterDate { get; set; }
+        public string ImageName { get; set; }
+    }
 }

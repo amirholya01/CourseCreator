@@ -1,15 +1,10 @@
 ﻿using CourseCreator.Core.Convertors;
-using CourseCreator.Core.DTOs.User;
+using CourseCreator.Core.DTOs;
 using CourseCreator.Core.Security;
 using CourseCreator.Core.Services.Interfaces;
 using CourseCreator.Core.Utils;
 using CourseCreator.Datalayer.Context;
 using CourseCreator.Datalayer.Entities.User;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseCreator.Core.Services
 {
@@ -95,6 +90,16 @@ namespace CourseCreator.Core.Services
             list.PageCount = result.Count() / take;
             list.Users = result.OrderBy(u => u.RegisterDate).Skip(skip).Take(take).ToList();
             return list;
+        }
+
+        public SideBarUserPanelViewModel GetSidebarUserPanelData(string username)
+        {
+            return _context.Users.Where(u => u.Username == username).Select(u => new SideBarUserPanelViewModel
+            { 
+                Username = u.Username,
+                ImageName = u.UserAvatar,
+                RegisterDate = u.RegisterDate,
+            }).Single();
         }
     }
 }
