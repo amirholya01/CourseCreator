@@ -20,5 +20,9 @@ namespace CourseCreator.Core.Services.Interfaces
         #region User Panel
         InformationUserViewModel GetUserInformation(string username);
         #endregion
+
+        #region Admin Panel
+        UserForAdminViewModel GetUsers(int PageId = 1, string filterEmail = "", string filterUsername = "");
+        #endregion
     }
 }

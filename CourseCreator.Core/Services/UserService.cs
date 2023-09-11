@@ -76,6 +76,25 @@ namespace CourseCreator.Core.Services
             return information;
         }
 
-     
+        public UserForAdminViewModel GetUsers(int PageId = 1, string filterEmail = "", string filterUsername = "")
+        {
+            IQueryable<User> result = _context.Users;
+
+            if(!string.IsNullOrEmpty(filterEmail))
+                result = result.Where(u => u.Email.Contains(filterEmail));
+
+            if (!string.IsNullOrEmpty(filterUsername))
+                result = result.Where(u => u.Username.Contains(filterUsername));
+
+            int take = 20;
+            int skip = (PageId - 1 ) * take;
+
+           
+            UserForAdminViewModel list = new UserForAdminViewModel();
+            list.CurrentPage = PageId;
+            list.PageCount = result.Count() / take;
+            list.Users = result.OrderBy(u => u.RegisterDate).Skip(skip).Take(take).ToList();
+            return list;
+        }
     }
 }
