@@ -1,5 +1,5 @@
 ﻿using CourseCreator.Core.Convertors;
-using CourseCreator.Core.DTOs;
+using CourseCreator.Core.DTOs.User;
 using CourseCreator.Core.Security;
 using CourseCreator.Core.Services.Interfaces;
 using CourseCreator.Core.Utils;

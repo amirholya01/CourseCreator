@@ -1,5 +1,4 @@
 ﻿using CourseCreator.Core.Convertors;
-using CourseCreator.Core.DTOs;
 using CourseCreator.Core.Security;
 using CourseCreator.Core.Services.Interfaces;
 using CourseCreator.Core.Utils;
@@ -9,6 +8,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Security.Claims;
+using CourseCreator.Core.DTOs.User;
 
 namespace CourseCreator.Web.Controllers
 {
