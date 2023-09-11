@@ -61,6 +61,21 @@ namespace CourseCreator.Core.Services
             _context.SaveChanges();
             return true;
         }
+        public User GetUserByUsername(string username)
+        {
+            return _context.Users.SingleOrDefault(u => u.Username == username);
+        }
+        public InformationUserViewModel GetUserInformation(string username)
+        {
+            var user = GetUserByUsername(username);
+            InformationUserViewModel information = new InformationUserViewModel();
+            information.Username = user.Username;
+            information.Email = user.Email;
+            information.RegisterDate = user.RegisterDate;
 
+            return information;
+        }
+
+     
     }
 }

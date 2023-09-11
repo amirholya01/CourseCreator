@@ -15,5 +15,10 @@ namespace CourseCreator.Core.Services.Interfaces
         int AddUser(User user);
         User LoginUser(LoginViewModel login);
         bool ActiveAccount(string activeCode);
+        User GetUserByUsername(string username);
+
+        #region User Panel
+        InformationUserViewModel GetUserInformation(string username);
+        #endregion
     }
 }

@@ -3,6 +3,7 @@ using CourseCreator.Core.Services.Interfaces;
 using CourseCreator.Core.Servieces.Interfaces;
 using CourseCreator.Datalayer.Context;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Routing.Template;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -57,5 +58,20 @@ app.UseAuthorization();
 app.MapDefaultControllerRoute();
 
 app.MapRazorPages();
-
+//app.UseMvc(routes =>
+//{
+//    routes.MapRoute(
+//        name: "areas",
+//        template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+//        );
+//    routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+//});
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+    );
 app.Run();
