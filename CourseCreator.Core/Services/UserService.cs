@@ -101,5 +101,32 @@ namespace CourseCreator.Core.Services
                 RegisterDate = u.RegisterDate,
             }).Single();
         }
+
+        public EditProfileViewModel GetDataForEditProfileUser(string username)
+        {
+            return _context.Users.Where(u => u.Username == username).Select(u => new EditProfileViewModel()
+            {
+                AvatarName = u.UserAvatar,
+                Username = u.Username,
+                Email = u.Email,
+            }).Single();
+        }
+
+        public void EditProfile(EditProfileViewModel profile)
+        {
+            if(profile.UserAvatar != null)
+            {
+                string imagePath = "";
+                if (profile.AvatarName != "default.png")
+                {
+                    imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UserAvatar", profile.AvatarName);
+                    if(File.Exists(imagePath))
+                    {
+                        File.Delete(imagePath);
+                    }
+                }
+                string imageName = Guid.NewGuid().ToString();
+            }
+        }
     }
 }
