@@ -35,7 +35,7 @@ builder.Services.AddAuthentication(options =>
 #region IOC
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ICourseService, CourseService>();
-
+builder.Services.AddTransient<IPermissionService, PermissionService>();
 #endregion
 
 var app = builder.Build();

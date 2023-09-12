@@ -25,12 +25,12 @@ namespace CourseCreator.Web.Areas.UserPanel.Controllers
         {
             return View(_userService.GetDataForEditProfileUser(User.Identity.Name));
         }
-        [Route("UserPanel/EditProfile")]
-        [HttpPost]
-        public IActionResult EditProfile(EditProfileViewModel profile)
-        {
-            if (!ModelState.IsValid)
-                return View(profile);
-        }
+        //[Route("UserPanel/EditProfile")]
+        //[HttpPost]
+        //public IActionResult EditProfile(EditProfileViewModel profile)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return View(profile);
+        //}
     }
 }

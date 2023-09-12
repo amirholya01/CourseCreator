@@ -112,21 +112,45 @@ namespace CourseCreator.Core.Services
             }).Single();
         }
 
-        public void EditProfile(EditProfileViewModel profile)
+        public int AddUserFromAdmin(CreateUserViewModel createUser)
         {
-            if(profile.UserAvatar != null)
+            User user = new User();
+            user.Password = HashString.hashString(createUser.Password);
+            user.ActiveCode = CodeGenerator.stringCodeGenerator();
+            user.Email = createUser.Email;
+            user.IsActive = true;
+            user.RegisterDate = DateTime.Now;
+            user.Username = createUser.Username;
+            //Save avatar
+             if (user.UserAvatar != null)
             {
                 string imagePath = "";
-                if (profile.AvatarName != "default.png")
+                user.UserAvatar = CodeGenerator.stringCodeGenerator() + Path.GetExtension(user.UserAvatar);
+                imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UserAvatar", user.UserAvatar);
+                using(var stream = new FileStream(imagePath, FileMode.Create)) 
                 {
-                    imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UserAvatar", profile.AvatarName);
-                    if(File.Exists(imagePath))
-                    {
-                        File.Delete(imagePath);
-                    }
+                    createUser.UserAvatar.CopyTo(stream);
                 }
-                string imageName = Guid.NewGuid().ToString();
             }
+
+            return AddUser(user);
         }
+
+        //public void EditProfile(EditProfileViewModel profile)
+        //{
+        //    if(profile.UserAvatar != null)
+        //    {
+        //        string imagePath = "";
+        //        if (profile.AvatarName != "default.png")
+        //        {
+        //            imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/UserAvatar", profile.AvatarName);
+        //            if(File.Exists(imagePath))
+        //            {
+        //                File.Delete(imagePath);
+        //            }
+        //        }
+        //        string imageName = Guid.NewGuid().ToString();
+        //    }
+        //}
     }
 }

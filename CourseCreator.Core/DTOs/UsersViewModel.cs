@@ -1,4 +1,5 @@
 ﻿using CourseCreator.Datalayer.Entities.User;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -34,8 +35,10 @@ namespace CourseCreator.Core.DTOs
         [MaxLength(100, ErrorMessage = "The {0} can not be more than {1} characters.")]
         public string Password { get; set; }
 
+        public  IFormFile UserAvatar { get; set; }
+        //public List<int> SelectedRoles { get; set; }
 
 
-        
+
     }
 }
